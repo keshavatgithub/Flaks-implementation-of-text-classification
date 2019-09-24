@@ -137,7 +137,7 @@ maxlen = 150
 tokenizer = Tokenizer(num_words=max_features)
 tokenizer.fit_on_texts(X_train)
 
-pickle.dump(tokenizer,open(r'C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/tokenizer.pkl','wb'))
+pickle.dump(tokenizer,open('tokenizer.pkl','wb'))
 
 sequences = tokenizer.texts_to_sequences(X_train)
 padded_sequences = sequence.pad_sequences(sequences,maxlen=maxlen)
@@ -158,7 +158,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
 
 model.fit(padded_sequences,y_train,batch_size=32,epochs=20,validation_split=0.1)
-model.save(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/Fitara.h5")
+model.save("Fitara.h5")
 
 """Evaluating the results on testing data."""
 
