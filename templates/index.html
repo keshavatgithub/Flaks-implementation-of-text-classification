@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+      .box {
+      width: 400px;
+      height: 30px;
+      border: 1px solid #999;
+      font-size: 18px;
+      color: #1c87c9;
+      background-color: #fff;
+      border-radius: 5px;
+      }
+    </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Fitara Prediction </h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predictions')}}"method="post">
+    	<input type="text" name="input" placeholder="text" required="required" />
+        <select name="algo" class="box">
+	 	<option value="ML">Naive Bayes</option>
+	 	<option value="DL">RNN</option>
+	 			     	
+	 </select>
+         <br>
+         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
