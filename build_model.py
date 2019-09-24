@@ -1,7 +1,6 @@
 from model import NLPModel
 import pandas as pd
 import numpy as np
-# import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import re
 import nltk
@@ -22,9 +21,7 @@ def stopwords(text):
 
 def build_model():
     model = NLPModel()
-
-    # filename = os.path.join(
-    #     os.path.dirname(__file__), 'chalicelib', 'all/train.tsv')
+    
     df_extract_combined = pd.read_csv('extract_combined.csv')
     df_labels = pd.read_csv('labels.csv')
 
