@@ -31,9 +31,9 @@ conn.execute('CREATE TABLE fitara (Input TEXT, Prediction TEXT)')
 conn.close()
 '''
 
-with open(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/tokenizer.pkl","rb") as f:
+with open(r"tokenizer.pkl","rb") as f:
     modelrnn.tokenizer=pickle.load(f)
-modelrnn.rnn = load_model(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/Fitara.h5")
+modelrnn.rnn = load_model("Fitara.h5")
 global graph
 graph = tf.get_default_graph()
 
@@ -87,54 +87,3 @@ def predictions():
 if __name__ == "__main__":
     app.run(debug=True)
     
-'''
-# argument parsing
-parser = reqparse.RequestParser()
-parser.add_argument('query')
-
-
-class PredictSentiment(Resource):
-    def get(self):
-        # use parser and find the user's query
-        args = parser.parse_args()
-        user_query = args['query']
-
-        # vectorize the user's query and make a prediction
-        uq_vectorized = model.vectorizer_transform(np.array([user_query]))
-        prediction = model.predict(uq_vectorized)
-        pred_proba = model.predict_proba(uq_vectorized)
-
-        # Output either 'Negative' or 'Positive' along with the score
-        if prediction == 0:
-            pred_text = 'Negative'
-        else:
-            pred_text = 'Positive'
-
-        # round the predict proba value and set to new variable
-        confidence = round(pred_proba[0], 3)
-
-        # create JSON object
-        output = {'prediction': pred_text, 'confidence': confidence}
-
-        return output
-
-
-# Setup the Api resource routing here
-# Route the URL to the resource
-api.add_resource(PredictSentiment, '/predict')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-        modelrnn=RNN_LSTM()
-        with open(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/tokenizer.pkl","rb") as f:
-             modelrnn.tokenizer=pickle.load(f)
-        modelrnn.rnn=load_model(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/Fitara.h5")
-        global graph
-        graph = tf.get_default_graph()
-        sequenced=modelrnn.create_tokens(features)
-        #modelrnn.__setattr__(name, value)
-        with graph.as_default():
-            prediction = modelrnn.predict_rnn(sequenced)
-
-'''
