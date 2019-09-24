@@ -17,10 +17,10 @@ api = Api(app)
 
 model = NLPModel()
 modelrnn=RNN_LSTM()
-clf_path = r'C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/FitaraClassifier.pkl'
+clf_path = 'FitaraClassifier.pkl'
 with open(clf_path, 'rb') as f:
     model.clf = pickle.load(f)
-vec_path = r'C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/CountVectorizer.pkl'
+vec_path = 'CountVectorizer.pkl'
 with open(vec_path, 'rb') as f:
     model.vectorizer = pickle.load(f)        
 import sqlite3
@@ -31,7 +31,7 @@ conn.execute('CREATE TABLE fitara (Input TEXT, Prediction TEXT)')
 conn.close()
 '''
 
-with open(r"tokenizer.pkl","rb") as f:
+with open("tokenizer.pkl","rb") as f:
     modelrnn.tokenizer=pickle.load(f)
 modelrnn.rnn = load_model("Fitara.h5")
 global graph
