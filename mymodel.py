@@ -9,7 +9,7 @@ from keras.models import load_model
 class RNN_LSTM(object):
     def __init__(self):
         self.tokenizer = Tokenizer(num_words=1000)
-        self.rnn = load_model(r"C:\Users\kesgupta\Desktop\nlp practice\restAPI\using anjali link\Deployment-flask-master\flask-rest-setup-master\sentiment-clf\lib\models/Fitara.h5")
+        self.rnn = Sequential()
         self.value=[]
 
     def create_tokens(self,X):
