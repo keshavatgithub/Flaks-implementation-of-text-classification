@@ -1,18 +1,28 @@
 # Flaks-implementation-of-text-classification
 This repository trains and saves a NB classifier and a RNN and adds them to production using flask
 # Steps to run the code
-the names of the files in the files for loading,pickling and saving should be changed to the paths of the locations on your system.
 
-run the model.py
+Run the model.py
 
-run build_model.py
+Run build_model.py
 
-run fitara_using_rnn.py
+After this you will see the pickle(.pkl) files of classifier and vectorizer.
 
-run rapp.py
+Run fitara_using_rnn.py
 
-the above file will create a link for you,open that link
+After this you will see the pickle of tokenizer and .h5 file of the rnn classifier.
 
-enter some text
+open api.py and uncomment the following code snippet
+'''
+conn = sqlite3.connect('database.db')
+conn.execute('CREATE TABLE fitara (Input TEXT, Prediction TEXT)')
+conn.close()
+'''
 
-click one of the submit button
+Run api.py and once the table is craeted,comment the above code snippet again
+
+Run api.py,it will create a link for you,open that link
+
+Enter some text
+
+Choose on of the options and click predict
